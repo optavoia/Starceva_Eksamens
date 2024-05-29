@@ -53,14 +53,12 @@ public class FirstFrame extends JFrame {
 		btnStart.setFont(new Font("Cherry Bomb One", Font.PLAIN, 22));
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SecondFrame jf2 = new SecondFrame(); //open form 2
-				//display form 2
+				SecondFrame jf2 = new SecondFrame();
 				jf2.show();
-				//close current form after opening form 2
 				dispose();
 			}
 		});
-		btnStart.setBounds(300, 179, 163, 58);
+		btnStart.setBounds(310, 179, 163, 58);
 		contentPane.add(btnStart);
 		
 		JButton btnQuit = new JButton("Quit");
@@ -72,7 +70,7 @@ public class FirstFrame extends JFrame {
 				System.exit(0);
 			}
 		});
-		btnQuit.setBounds(300, 260, 163, 58);
+		btnQuit.setBounds(310, 262, 163, 58);
 		contentPane.add(btnQuit);
 		
 		JLabel lblNewLabel = new JLabel("Laipni aicināti uz testu");
