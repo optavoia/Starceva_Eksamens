@@ -16,11 +16,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.*;
 
 public class SecondFrame extends JFrame {
+	private PointManager pointManager;
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	public JCheckBox cb1, cb2 , cb3, cb4;
-	public int points;
 
 	/**
 	 * Launch the application.
@@ -29,7 +29,8 @@ public class SecondFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SecondFrame frame = new SecondFrame();
+					PointManager pointManager = new PointManager();
+					SecondFrame frame = new SecondFrame(pointManager);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,7 +51,9 @@ public class SecondFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SecondFrame() {
+	public SecondFrame(PointManager pointManager) {
+		this.pointManager = pointManager;
+		
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 800, 480);
@@ -108,12 +111,18 @@ public class SecondFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 boolean isCorrect = cb1.isSelected() && cb3.isSelected()
                         && !cb2.isSelected() && !cb4.isSelected();
+                
+                pointManager.resetPoints();
+                System.out.println("Points: "+ pointManager.getPoints());
 
                 if (isCorrect) {
-                    points++;
+                	pointManager.addPoints(1);
+                }else {
+                	
                 }
+                System.out.println("Points: "+ pointManager.getPoints());
 
-                ThirdFrame jf3 = new ThirdFrame(); //open frame3
+                ThirdFrame jf3 = new ThirdFrame(pointManager); //open frame3
                 jf3.setVisible(true); //show frame3
                 dispose(); //close previous frame
             }
@@ -126,7 +135,7 @@ public class SecondFrame extends JFrame {
         contentPane.add(btnSub);
 
         JLabel GrayBox = new JLabel("");
-        GrayBox.setIcon(new ImageIcon("D:\\Bum\\Starceva_Eksamens\\gray1.jpg"));
+        GrayBox.setIcon(new ImageIcon("gray1.jpg"));
         GrayBox.setBounds(10, 161, 764, 191);
         contentPane.add(GrayBox);
 
@@ -135,6 +144,12 @@ public class SecondFrame extends JFrame {
         lblText.setFont(new Font("Cherry Bomb One", Font.PLAIN, 35));
         lblText.setBounds(223, 53, 349, 97);
         contentPane.add(lblText);
+        
+        JLabel lblText2_1 = new JLabel("1)");
+        lblText2_1.setForeground(Color.WHITE);
+        lblText2_1.setFont(new Font("Cherry Bomb One", Font.PLAIN, 35));
+        lblText2_1.setBounds(735, -24, 525, 97);
+        contentPane.add(lblText2_1);
 
         JLabel lblText2 = new JLabel("Kā izveidot viendimensiju veselu");
         lblText2.setForeground(new Color(255, 255, 255));
@@ -145,7 +160,7 @@ public class SecondFrame extends JFrame {
         JLabel Background = new JLabel("");
         Background.setForeground(new Color(255, 255, 255));
         Background.setBounds(0, 0, 784, 441);
-        Background.setIcon(new ImageIcon("D:\\Bum\\Starceva_Eksamens\\Background3.jpg"));
+        Background.setIcon(new ImageIcon("Background3.jpg"));
         contentPane.add(Background);
     }
 }

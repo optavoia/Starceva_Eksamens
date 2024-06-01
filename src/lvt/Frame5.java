@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 public class Frame5 extends JFrame {
+	private PointManager pointManager;
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -30,7 +31,8 @@ public class Frame5 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Frame5 frame = new Frame5();
+					PointManager pointManager = new PointManager();
+					Frame5 frame = new Frame5(pointManager);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,7 +53,9 @@ public class Frame5 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Frame5() {
+	public Frame5(PointManager pointManager) {
+		this.pointManager = pointManager;
+		
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 480);
@@ -112,12 +116,14 @@ public class Frame5 extends JFrame {
                         && !cb3.isSelected() && cb4.isSelected();
     
 		    if (isCorrect) {
-		    	points++;
+		    	pointManager.addPoints(1);
 		    } else {
-		    	points += 0;
+
 		    }
 		    
-		    Frame6 jf6 = new Frame6();
+		    System.out.println("Points: "+ pointManager.getPoints());
+		    
+		    Frame6 jf6 = new Frame6(pointManager);
 			jf6.show();
 			dispose();
 			
@@ -130,7 +136,7 @@ public class Frame5 extends JFrame {
 		contentPane.add(btnSub);
 		
 		JLabel GrayBox = new JLabel("");
-		GrayBox.setIcon(new ImageIcon("D:\\Bum\\Starceva_Eksamens\\gray1.jpg"));
+		GrayBox.setIcon(new ImageIcon("gray1.jpg"));
 		GrayBox.setBounds(10, 161, 764, 191);
 		contentPane.add(GrayBox);
 		
@@ -139,6 +145,12 @@ public class Frame5 extends JFrame {
 		lblText.setFont(new Font("Cherry Bomb One", Font.PLAIN, 35));
 		lblText.setBounds(259, 54, 349, 97);
 		contentPane.add(lblText);
+		
+		JLabel lblText2_1 = new JLabel("4)");
+        lblText2_1.setForeground(Color.WHITE);
+        lblText2_1.setFont(new Font("Cherry Bomb One", Font.PLAIN, 35));
+        lblText2_1.setBounds(735, -24, 525, 97);
+        contentPane.add(lblText2_1);
 		
 		JLabel lblText2 = new JLabel("Kā var kopēt masīvu jaunā");
 		lblText2.setForeground(new Color(255, 255, 255));
@@ -149,7 +161,7 @@ public class Frame5 extends JFrame {
 		JLabel Background = new JLabel("");
 		Background.setForeground(new Color(255, 255, 255));
 		Background.setBounds(0, 0, 784, 441);
-		Background.setIcon(new ImageIcon("D:\\Bum\\Starceva_Eksamens\\Background3.jpg"));
+		Background.setIcon(new ImageIcon("Background3.jpg"));
 		contentPane.add(Background);
 	}
 

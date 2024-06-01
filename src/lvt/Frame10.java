@@ -1,27 +1,28 @@
 package lvt;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import java.awt.Font;
 import java.awt.Color;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.event.ActionEvent;
 
-public class ThirdFrame extends JFrame {
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+public class Frame10 extends JFrame {
 	private PointManager pointManager;
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	public JCheckBox cb1, cb2 , cb3, cb4;
+	private JLabel lblText2_1;
 
 	/**
 	 * Launch the application.
@@ -29,9 +30,9 @@ public class ThirdFrame extends JFrame {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				PointManager pointManager = new PointManager();
 				try {
-					ThirdFrame frame = new ThirdFrame(pointManager);
+					PointManager pointManager = new PointManager();
+					Frame10 frame = new Frame10(pointManager);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,10 +40,6 @@ public class ThirdFrame extends JFrame {
 			}
 		});
 	}
-
-	/**
-	 * Create the frame.
-	 */
 	
 	private int getSelectedCheckboxCount() {
         int count = 0;
@@ -52,8 +49,11 @@ public class ThirdFrame extends JFrame {
         if (cb4.isSelected()) count++;
         return count;
     }
-	
-	public ThirdFrame(PointManager pointManager) {
+
+	/**
+	 * Create the frame.
+	 */
+	public Frame10(PointManager pointManager) {
 		setResizable(false);
 		this.pointManager = pointManager;
 		
@@ -63,34 +63,35 @@ public class ThirdFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+contentPane.setLayout(null);
 		
-		cb1 = new JCheckBox("int[] array = {1, 2, 3, 4, 5};");
-		cb1.setOpaque(false);
-		cb1.setForeground(Color.WHITE);
+		//CheckBoxes
+		cb1 = new JCheckBox("array.length();");
 		cb1.setFont(new Font("Cherry Bomb One", Font.PLAIN, 25));
-		cb1.setBounds(201, 167, 357, 43);
+		cb1.setForeground(new Color(255, 255, 255));
+		cb1.setBounds(269, 172, 579, 43);
+		cb1.setOpaque(false);
 		contentPane.add(cb1);
 		
-		cb2 = new JCheckBox("int array[] = new int[]{1, 2, 3, 4, 5};");
+		cb2 = new JCheckBox("array.length;");
 		cb2.setOpaque(false);
 		cb2.setForeground(Color.WHITE);
 		cb2.setFont(new Font("Cherry Bomb One", Font.PLAIN, 25));
-		cb2.setBounds(201, 216, 475, 39);
+		cb2.setBounds(269, 218, 541, 39);
 		contentPane.add(cb2);
 		
-		cb3 = new JCheckBox("int[] array = new int[5]{1, 2, 3, 4, 5};");
+		cb3 = new JCheckBox("length(array);");
 		cb3.setOpaque(false);
 		cb3.setForeground(Color.WHITE);
 		cb3.setFont(new Font("Cherry Bomb One", Font.PLAIN, 25));
-		cb3.setBounds(201, 260, 479, 38);
+		cb3.setBounds(269, 260, 571, 38);
 		contentPane.add(cb3);
 		
-		cb4 = new JCheckBox("int array = {1, 2, 3, 4, 5};");
+		cb4 = new JCheckBox("array.size();");
 		cb4.setOpaque(false);
 		cb4.setForeground(Color.WHITE);
 		cb4.setFont(new Font("Cherry Bomb One", Font.PLAIN, 25));
-		cb4.setBounds(201, 301, 333, 38);
+		cb4.setBounds(269, 301, 673, 43);
 		contentPane.add(cb4);
 		
 		ItemListener itemListener = new ItemListener() {
@@ -107,60 +108,62 @@ public class ThirdFrame extends JFrame {
         cb2.addItemListener(itemListener);
         cb3.addItemListener(itemListener);
         cb4.addItemListener(itemListener);
-        
-        JLabel lblText2_1 = new JLabel("2)");
-        lblText2_1.setForeground(Color.WHITE);
-        lblText2_1.setFont(new Font("Cherry Bomb One", Font.PLAIN, 35));
-        lblText2_1.setBounds(735, -24, 525, 97);
-        contentPane.add(lblText2_1);
-		
-		JLabel lblText2 = new JLabel("Kā inicializēt masīvu ar vērtībām,");
-		lblText2.setForeground(Color.WHITE);
-		lblText2.setFont(new Font("Cherry Bomb One", Font.PLAIN, 35));
-		lblText2.setBounds(140, 11, 546, 97);
-		contentPane.add(lblText2);
-		
-		JLabel lblText = new JLabel("to deklarējot?");
-		lblText.setForeground(Color.WHITE);
-		lblText.setFont(new Font("Cherry Bomb One", Font.PLAIN, 35));
-		lblText.setBounds(277, 51, 239, 97);
-		contentPane.add(lblText);
 		
 		JButton btnSub = new JButton("Submit");
 		btnSub.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean isCorrect = cb1.isSelected() && cb2.isSelected()
-                        && !cb3.isSelected() && !cb4.isSelected();
+				boolean isCorrect = cb1.isSelected() && !cb2.isSelected() 
+                        && cb3.isSelected() && cb4.isSelected();
     
-				if (isCorrect) {
-                	pointManager.addPoints(1);
-                }else {
-                	
-                }
-				
-				System.out.println("Points: "+ pointManager.getPoints());
-			    
-			    Frame4 jf4 = new Frame4(pointManager);
-				jf4.show();
-				dispose();
-				
-				}
+		    if (isCorrect) {
+		    	pointManager.addPoints(1);
+		    } else {
+
+		    }
+		    
+		    System.out.println("Points: "+ pointManager.getPoints());
+		    
+		    EndFrame jf11 = new EndFrame(pointManager);
+			jf11.show();
+			dispose();
+			
+			}
 		});
+		btnSub.setBackground(Color.WHITE);
 		btnSub.setForeground(new Color(61, 148, 150));
 		btnSub.setFont(new Font("Cherry Bomb One", Font.PLAIN, 22));
-		btnSub.setBackground(Color.WHITE);
-		btnSub.setBounds(302, 375, 178, 55);
+		btnSub.setBounds(298, 375, 178, 55);
 		contentPane.add(btnSub);
 		
 		JLabel GrayBox = new JLabel("");
 		GrayBox.setIcon(new ImageIcon("gray1.jpg"));
-		GrayBox.setBackground(new Color(192, 192, 192));
-		GrayBox.setBounds(10, 159, 764, 191);
+		GrayBox.setBounds(10, 161, 764, 191);
 		contentPane.add(GrayBox);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("Background3.jpg"));
-		lblNewLabel.setBounds(0, 0, 784, 441);
-		contentPane.add(lblNewLabel);
+		JLabel lblText2 = new JLabel("Izvēlieties nepareizās opcijas");
+		lblText2.setForeground(new Color(255, 255, 255));
+		lblText2.setFont(new Font("Cherry Bomb One", Font.PLAIN, 35));
+		lblText2.setBounds(147, 11, 498, 97);
+		contentPane.add(lblText2);
+		
+		lblText2_1 = new JLabel("kā iegūt masīva(int) garumu?");
+		lblText2_1.setForeground(Color.WHITE);
+		lblText2_1.setFont(new Font("Cherry Bomb One", Font.PLAIN, 35));
+		lblText2_1.setBounds(171, 51, 498, 97);
+		contentPane.add(lblText2_1);
+		
+		JLabel lblText2_1 = new JLabel("10)");
+        lblText2_1.setForeground(Color.WHITE);
+        lblText2_1.setFont(new Font("Cherry Bomb One", Font.PLAIN, 35));
+        lblText2_1.setBounds(716, -22, 525, 97);
+        contentPane.add(lblText2_1);
+		
+		JLabel Background = new JLabel("");
+		Background.setForeground(new Color(255, 255, 255));
+		Background.setBounds(0, 0, 784, 441);
+		Background.setIcon(new ImageIcon("Background3.jpg"));
+		contentPane.add(Background);
 	}
 }
+
+

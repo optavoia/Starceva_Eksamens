@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 public class Frame6 extends JFrame {
+	private PointManager pointManager;
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -29,7 +30,8 @@ public class Frame6 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Frame6 frame = new Frame6();
+					PointManager pointManager = new PointManager();
+					Frame6 frame = new Frame6(pointManager);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,7 +52,10 @@ public class Frame6 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Frame6() {
+	public Frame6(PointManager pointManager) {
+		setResizable(false);
+		this.pointManager = pointManager;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 480);
 		contentPane = new JPanel();
@@ -110,13 +115,15 @@ contentPane.setLayout(null);
                         && !cb2.isSelected() && !cb3.isSelected();
     
 		    if (isCorrect) {
-		    	//points++;
+		    	pointManager.addPoints(1);
 		    } else {
-		    	//points += 0;
+
 		    }
 		    
-		    Frame6 jf6 = new Frame6();
-			jf6.show();
+		    System.out.println("Points: "+ pointManager.getPoints());
+		    
+		    Frame7 jf7 = new Frame7(pointManager);
+			jf7.show();
 			dispose();
 			
 			}
@@ -128,7 +135,7 @@ contentPane.setLayout(null);
 		contentPane.add(btnSub);
 		
 		JLabel GrayBox = new JLabel("");
-		GrayBox.setIcon(new ImageIcon("D:\\Bum\\Starceva_Eksamens\\gray1.jpg"));
+		GrayBox.setIcon(new ImageIcon("gray1.jpg"));
 		GrayBox.setBounds(10, 161, 764, 191);
 		contentPane.add(GrayBox);
 		
@@ -137,6 +144,12 @@ contentPane.setLayout(null);
 		lblText.setFont(new Font("Cherry Bomb One", Font.PLAIN, 35));
 		lblText.setBounds(157, 59, 497, 97);
 		contentPane.add(lblText);
+		
+		JLabel lblText2_1 = new JLabel("5)");
+        lblText2_1.setForeground(Color.WHITE);
+        lblText2_1.setFont(new Font("Cherry Bomb One", Font.PLAIN, 35));
+        lblText2_1.setBounds(735, -24, 525, 97);
+        contentPane.add(lblText2_1);
 		
 		JLabel lblText2 = new JLabel("Kurš no šiem apgalvojumiem attiecas uz");
 		lblText2.setForeground(new Color(255, 255, 255));
@@ -147,7 +160,7 @@ contentPane.setLayout(null);
 		JLabel Background = new JLabel("");
 		Background.setForeground(new Color(255, 255, 255));
 		Background.setBounds(0, 0, 784, 441);
-		Background.setIcon(new ImageIcon("D:\\Bum\\Starceva_Eksamens\\Background3.jpg"));
+		Background.setIcon(new ImageIcon("Background3.jpg"));
 		contentPane.add(Background);
 	}
 }
