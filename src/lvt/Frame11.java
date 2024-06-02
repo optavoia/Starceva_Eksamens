@@ -13,12 +13,13 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 public class Frame11 extends JFrame {
 	private PointManager pointManager;
-	private int questionNumber = 9;
+	private int questionNumber = 10;
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -67,32 +68,32 @@ public class Frame11 extends JFrame {
 contentPane.setLayout(null);
 		
 		//CheckBoxes
-		cb1 = new JCheckBox("array.length();");
+		cb1 = new JCheckBox("Nav iespējams, masīva lielums ir fiksēts.");
 		cb1.setFont(new Font("Cherry Bomb One", Font.PLAIN, 25));
 		cb1.setForeground(new Color(255, 255, 255));
-		cb1.setBounds(269, 172, 579, 43);
+		cb1.setBounds(168, 169, 498, 43);
 		cb1.setOpaque(false);
 		contentPane.add(cb1);
 		
-		cb2 = new JCheckBox("array.length;");
+		cb2 = new JCheckBox("array.remove(index);");
 		cb2.setOpaque(false);
 		cb2.setForeground(Color.WHITE);
 		cb2.setFont(new Font("Cherry Bomb One", Font.PLAIN, 25));
-		cb2.setBounds(269, 218, 541, 39);
+		cb2.setBounds(168, 215, 541, 39);
 		contentPane.add(cb2);
 		
-		cb3 = new JCheckBox("length(array);");
+		cb3 = new JCheckBox("Arrays.remove(array, index);");
 		cb3.setOpaque(false);
 		cb3.setForeground(Color.WHITE);
 		cb3.setFont(new Font("Cherry Bomb One", Font.PLAIN, 25));
-		cb3.setBounds(269, 260, 571, 38);
+		cb3.setBounds(168, 257, 571, 38);
 		contentPane.add(cb3);
 		
-		cb4 = new JCheckBox("array.size();");
+		cb4 = new JCheckBox("Arrays.copyOfRange(array, 0, index - 1);");
 		cb4.setOpaque(false);
 		cb4.setForeground(Color.WHITE);
 		cb4.setFont(new Font("Cherry Bomb One", Font.PLAIN, 25));
-		cb4.setBounds(269, 301, 673, 43);
+		cb4.setBounds(168, 298, 673, 43);
 		contentPane.add(cb4);
 		
 		ItemListener itemListener = new ItemListener() {
@@ -113,20 +114,23 @@ contentPane.setLayout(null);
 		JButton btnSub = new JButton("Submit");
 		btnSub.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean isCorrect = cb1.isSelected() && !cb2.isSelected() 
+				if (getSelectedCheckboxCount() == 0) {
+                    JOptionPane.showMessageDialog(contentPane, "Lūdzu, izdariet izvēli", "Kļūda", JOptionPane.ERROR_MESSAGE);
+                } else {
+				boolean isCorrect = !cb1.isSelected() && cb2.isSelected() 
                         && cb3.isSelected() && cb4.isSelected();
     
-		    if (isCorrect) {
-		    	pointManager.addPoints(1);
-		    } else {
-		    	pointManager.addIncQuestion(questionNumber);
-		    }
+			    if (isCorrect) {
+			    	pointManager.addPoints(1);
+			    } else {
+			    	pointManager.addIncQuestion(questionNumber);
+			    }
 
 		    
-		    EndFrame jf11 = new EndFrame(pointManager);
-			jf11.show();
-			dispose();
-			
+			    EndFrame jf12 = new EndFrame(pointManager);
+				jf12.show();
+				dispose();
+                }
 			}
 		});
 		btnSub.setBackground(Color.WHITE);
@@ -140,16 +144,16 @@ contentPane.setLayout(null);
 		GrayBox.setBounds(10, 161, 764, 191);
 		contentPane.add(GrayBox);
 		
-		JLabel lblText2 = new JLabel("Izvēlieties nepareizās opcijas");
+		JLabel lblText2 = new JLabel("Kā nevar noņemt elementu no");
 		lblText2.setForeground(new Color(255, 255, 255));
 		lblText2.setFont(new Font("Cherry Bomb One", Font.PLAIN, 35));
-		lblText2.setBounds(147, 11, 498, 97);
+		lblText2.setBounds(177, 11, 498, 97);
 		contentPane.add(lblText2);
 		
-		lblText2_1 = new JLabel("kā iegūt masīva(int) garumu?");
+		lblText2_1 = new JLabel("viendimensijas masīva?");
 		lblText2_1.setForeground(Color.WHITE);
 		lblText2_1.setFont(new Font("Cherry Bomb One", Font.PLAIN, 35));
-		lblText2_1.setBounds(171, 51, 498, 97);
+		lblText2_1.setBounds(229, 48, 498, 97);
 		contentPane.add(lblText2_1);
 		
 		

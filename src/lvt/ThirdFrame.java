@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.Color;
@@ -130,6 +131,9 @@ public class ThirdFrame extends JFrame {
 		JButton btnSub = new JButton("Submit");
 		btnSub.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (getSelectedCheckboxCount() == 0) {
+                    JOptionPane.showMessageDialog(contentPane, "Lūdzu, izdariet izvēli", "Kļūda", JOptionPane.ERROR_MESSAGE);
+                } else {
 				boolean isCorrect = cb1.isSelected() && cb2.isSelected()
                         && !cb3.isSelected() && !cb4.isSelected();
     
@@ -144,6 +148,7 @@ public class ThirdFrame extends JFrame {
 				dispose();
 				
 				}
+			}
 		});
 		btnSub.setForeground(new Color(61, 148, 150));
 		btnSub.setFont(new Font("Cherry Bomb One", Font.PLAIN, 22));

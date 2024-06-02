@@ -19,6 +19,7 @@ public class EndFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	
 
 	/**
 	 * Launch the application.
@@ -42,6 +43,12 @@ public class EndFrame extends JFrame {
 	 */
 	public EndFrame(PointManager pointManager) {
 		this.pointManager = pointManager;
+		
+		ImageIcon veryGood = new ImageIcon("grin.png");
+		ImageIcon good = new ImageIcon("slightly_smiling_face.png");
+		ImageIcon okey = new ImageIcon("neutral_face.png");
+		ImageIcon bad = new ImageIcon("sob.png");
+		
 		
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -90,18 +97,39 @@ public class EndFrame extends JFrame {
 		lblNewLabel.setBounds(320, 11, 163, 45);
 		contentPane.add(lblNewLabel);
 		
-		// Display incorrect questions
-        List<Integer> incorrectQuestions = pointManager.getIncQuestions();
-        StringBuilder incorrectQuestionsText = new StringBuilder("Incorrect Questions: ");
-        for (int question : incorrectQuestions) {
-            incorrectQuestionsText.append(question).append("), ");
+		//Display incorrect questions
+		List<Integer> incQuestions = pointManager.getIncQuestions();
+        String incQuestionsText;
+        if (incQuestions.isEmpty()) {
+            incQuestionsText = "Nepareizas atbildes: nav";
+        } else {
+            StringBuilder sb = new StringBuilder("Nepareizas atbildes: ");
+            for (int question : incQuestions) {
+                sb.append(question).append(") ");
+            }
+            incQuestionsText = sb.toString();
         }
 		
-		JLabel lblIncQuestions = new JLabel("" + incorrectQuestionsText);
+		JLabel lblIncQuestions = new JLabel("" + incQuestionsText);
 		lblIncQuestions.setForeground(Color.WHITE);
 		lblIncQuestions.setFont(new Font("Cherry Bomb One", Font.PLAIN, 28));
 		lblIncQuestions.setBounds(10, 130, 764, 45);
 		contentPane.add(lblIncQuestions);
+		
+		JLabel Image = new JLabel("");
+		Image.setBounds(10, 203, 268, 227);
+		contentPane.add(Image);
+		int length = incQuestions.size();
+		if (length >= 8) {
+		    Image.setIcon(bad);
+		} else if (length >= 6 && length < 8) {
+		    Image.setIcon(okey);
+		} else if (length >= 4 && length < 6) {
+		    Image.setIcon(good);
+		} else if(length < 4){
+		    Image.setIcon(veryGood);
+		}
+		
 		
 		JLabel Background = new JLabel("");
 		Background.setBounds(-192, -236, 1920, 1080);

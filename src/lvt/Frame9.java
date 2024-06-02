@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -113,19 +114,22 @@ contentPane.setLayout(null);
 		JButton btnSub = new JButton("Submit");
 		btnSub.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (getSelectedCheckboxCount() == 0) {
+                    JOptionPane.showMessageDialog(contentPane, "Lūdzu, izdariet izvēli", "Kļūda", JOptionPane.ERROR_MESSAGE);
+                } else {
 				boolean isCorrect = cb1.isSelected() && cb2.isSelected() 
                         && cb3.isSelected() && !cb4.isSelected();
     
-		    if (isCorrect) {
-		    	pointManager.addPoints(1);
-		    } else {
-		    	pointManager.addIncQuestion(questionNumber);
-		    }
-		    
-		    Frame10 jf10 = new Frame10(pointManager);
-			jf10.show();
-			dispose();
-			
+			    if (isCorrect) {
+			    	pointManager.addPoints(1);
+			    } else {
+			    	pointManager.addIncQuestion(questionNumber);
+			    }
+			    
+			    Frame10 jf10 = new Frame10(pointManager);
+				jf10.show();
+				dispose();
+                }
 			}
 		});
 		btnSub.setBackground(Color.WHITE);
@@ -151,7 +155,7 @@ contentPane.setLayout(null);
 		lblText2_1.setBounds(173, 60, 549, 97);
 		contentPane.add(lblText2_1);
 		
-		JLabel lblText2_1 = new JLabel("9)");
+		JLabel lblText2_1 = new JLabel("8)");
         lblText2_1.setForeground(Color.WHITE);
         lblText2_1.setFont(new Font("Cherry Bomb One", Font.PLAIN, 35));
         lblText2_1.setBounds(735, -24, 525, 97);

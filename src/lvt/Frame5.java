@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -113,19 +114,22 @@ public class Frame5 extends JFrame {
 		JButton btnSub = new JButton("Submit");
 		btnSub.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (getSelectedCheckboxCount() == 0) {
+                    JOptionPane.showMessageDialog(contentPane, "Lūdzu, izdariet izvēli", "Kļūda", JOptionPane.ERROR_MESSAGE);
+                } else {
 				boolean isCorrect = cb1.isSelected() && cb2.isSelected() 
                         && !cb3.isSelected() && cb4.isSelected();
     
-		    if (isCorrect) {
-		    	pointManager.addPoints(1);
-		    } else {
-		    	pointManager.addIncQuestion(questionNumber);
-		    }
-		 
-		    Frame6 jf6 = new Frame6(pointManager);
-			jf6.show();
-			dispose();
-			
+			    if (isCorrect) {
+			    	pointManager.addPoints(1);
+			    } else {
+			    	pointManager.addIncQuestion(questionNumber);
+			    }
+			 
+			    Frame6 jf6 = new Frame6(pointManager);
+				jf6.show();
+				dispose();
+                }
 			}
 		});
 		btnSub.setBackground(Color.WHITE);
