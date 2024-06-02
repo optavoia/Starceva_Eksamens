@@ -56,6 +56,9 @@ public class ThirdFrame extends JFrame {
     }
 	
 	public ThirdFrame(PointManager pointManager) {
+		ImageIcon background = new ImageIcon(getClass().getClassLoader().getResource("Background3.jpg"));
+		ImageIcon box = new ImageIcon(getClass().getClassLoader().getResource("gray1.jpg"));
+		
 		setResizable(false);
 		this.pointManager = pointManager;
 		
@@ -157,13 +160,13 @@ public class ThirdFrame extends JFrame {
 		contentPane.add(btnSub);
 		
 		JLabel GrayBox = new JLabel("");
-		GrayBox.setIcon(new ImageIcon("gray1.jpg"));
+		GrayBox.setIcon(box);
 		GrayBox.setBackground(new Color(192, 192, 192));
 		GrayBox.setBounds(10, 159, 764, 191);
 		contentPane.add(GrayBox);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("Background3.jpg"));
+		lblNewLabel.setIcon(background);
 		lblNewLabel.setBounds(0, 0, 784, 441);
 		contentPane.add(lblNewLabel);
 	}

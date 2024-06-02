@@ -16,7 +16,6 @@ import java.awt.Font;
 
 public class EndFrame extends JFrame {
 	private PointManager pointManager;
-
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	
@@ -44,11 +43,11 @@ public class EndFrame extends JFrame {
 	public EndFrame(PointManager pointManager) {
 		this.pointManager = pointManager;
 		
-		ImageIcon veryGood = new ImageIcon("grin.png");
-		ImageIcon good = new ImageIcon("slightly_smiling_face.png");
-		ImageIcon okey = new ImageIcon("neutral_face.png");
-		ImageIcon bad = new ImageIcon("sob.png");
-		
+		ImageIcon background = new ImageIcon(getClass().getClassLoader().getResource("Background3.jpg"));
+		ImageIcon veryGood = new ImageIcon(getClass().getClassLoader().getResource("grin.png"));
+		ImageIcon good = new ImageIcon(getClass().getClassLoader().getResource("slightly_smiling_face.png"));
+		ImageIcon okey = new ImageIcon(getClass().getClassLoader().getResource("neutral_face.png"));
+		ImageIcon bad = new ImageIcon(getClass().getClassLoader().getResource("sob.png"));
 		
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -133,7 +132,7 @@ public class EndFrame extends JFrame {
 		
 		JLabel Background = new JLabel("");
 		Background.setBounds(-192, -236, 1920, 1080);
-		Background.setIcon(new ImageIcon("Background3.jpg"));
+		Background.setIcon(background);
 		contentPane.add(Background);
 	}
 }

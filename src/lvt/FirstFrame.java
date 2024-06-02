@@ -40,6 +40,9 @@ public class FirstFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public FirstFrame(PointManager pointManager) {
+		
+		ImageIcon background = new ImageIcon(getClass().getClassLoader().getResource("Background3.jpg"));
+		
 		setResizable(false);
 		this.pointManager = pointManager;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -95,9 +98,10 @@ public class FirstFrame extends JFrame {
 		lblValodJava.setBounds(288, 110, 226, 45);
 		contentPane.add(lblValodJava);
 		
-		JLabel Background = new JLabel("");
-		Background.setBounds(-192, -236, 1920, 1080);
-		Background.setIcon(new ImageIcon("Background3.jpg"));
-		contentPane.add(Background);
+		JLabel Background1 = new JLabel("");
+		Background1.setBounds(-192, -236, 1920, 1080);
+		contentPane.add(Background1);
+		Background1.setIcon(background);
+		
 	}
 }

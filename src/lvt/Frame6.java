@@ -55,6 +55,9 @@ public class Frame6 extends JFrame {
 	 * Create the frame.
 	 */
 	public Frame6(PointManager pointManager) {
+		ImageIcon background = new ImageIcon(getClass().getClassLoader().getResource("Background3.jpg"));
+		ImageIcon box = new ImageIcon(getClass().getClassLoader().getResource("gray1.jpg"));
+		
 		setResizable(false);
 		this.pointManager = pointManager;
 		
@@ -138,7 +141,7 @@ contentPane.setLayout(null);
 		contentPane.add(btnSub);
 		
 		JLabel GrayBox = new JLabel("");
-		GrayBox.setIcon(new ImageIcon("gray1.jpg"));
+		GrayBox.setIcon(box);
 		GrayBox.setBounds(10, 161, 764, 191);
 		contentPane.add(GrayBox);
 		
@@ -163,7 +166,7 @@ contentPane.setLayout(null);
 		JLabel Background = new JLabel("");
 		Background.setForeground(new Color(255, 255, 255));
 		Background.setBounds(0, 0, 784, 441);
-		Background.setIcon(new ImageIcon("Background3.jpg"));
+		Background.setIcon(background);
 		contentPane.add(Background);
 	}
 }

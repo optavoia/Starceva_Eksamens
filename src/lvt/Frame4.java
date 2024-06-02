@@ -56,6 +56,9 @@ public class Frame4 extends JFrame {
 	 * Create the frame.
 	 */
 	public Frame4(PointManager pointManager) {
+		ImageIcon background = new ImageIcon(getClass().getClassLoader().getResource("Background3.jpg"));
+		ImageIcon box = new ImageIcon(getClass().getClassLoader().getResource("gray1.jpg"));
+		
 		setResizable(false);
 		this.pointManager = pointManager;
 		
@@ -157,13 +160,13 @@ public class Frame4 extends JFrame {
         contentPane.add(lblText2_1);
 		
 		JLabel GrayBox = new JLabel("");
-		GrayBox.setIcon(new ImageIcon("gray1.jpg"));
+		GrayBox.setIcon(box);
 		GrayBox.setBackground(Color.LIGHT_GRAY);
 		GrayBox.setBounds(10, 173, 764, 191);
 		contentPane.add(GrayBox);
 		
 		JLabel Background = new JLabel("");
-		Background.setIcon(new ImageIcon("Background3.jpg"));
+		Background.setIcon(background);
 		Background.setBounds(0, 0, 784, 441);
 		contentPane.add(Background);
 	}

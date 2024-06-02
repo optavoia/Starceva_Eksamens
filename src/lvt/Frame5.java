@@ -58,6 +58,9 @@ public class Frame5 extends JFrame {
 	public Frame5(PointManager pointManager) {
 		this.pointManager = pointManager;
 		
+		ImageIcon background = new ImageIcon(getClass().getClassLoader().getResource("Background3.jpg"));
+		ImageIcon box = new ImageIcon(getClass().getClassLoader().getResource("gray1.jpg"));
+		
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 480);
@@ -139,7 +142,7 @@ public class Frame5 extends JFrame {
 		contentPane.add(btnSub);
 		
 		JLabel GrayBox = new JLabel("");
-		GrayBox.setIcon(new ImageIcon("gray1.jpg"));
+		GrayBox.setIcon(box);
 		GrayBox.setBounds(10, 161, 764, 191);
 		contentPane.add(GrayBox);
 		
@@ -164,7 +167,7 @@ public class Frame5 extends JFrame {
 		JLabel Background = new JLabel("");
 		Background.setForeground(new Color(255, 255, 255));
 		Background.setBounds(0, 0, 784, 441);
-		Background.setIcon(new ImageIcon("Background3.jpg"));
+		Background.setIcon(background);
 		contentPane.add(Background);
 	}
 
