@@ -16,14 +16,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class Frame5 extends JFrame {
+public class Frame11 extends JFrame {
 	private PointManager pointManager;
-	private int questionNumber = 4;
+	private int questionNumber = 9;
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	public JCheckBox cb1, cb2 , cb3, cb4;
-	public int points;
+	private JLabel lblText2_1;
 
 	/**
 	 * Launch the application.
@@ -33,7 +33,7 @@ public class Frame5 extends JFrame {
 			public void run() {
 				try {
 					PointManager pointManager = new PointManager();
-					Frame5 frame = new Frame5(pointManager);
+					Frame11 frame = new Frame11(pointManager);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -54,45 +54,45 @@ public class Frame5 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Frame5(PointManager pointManager) {
+	public Frame11(PointManager pointManager) {
+		setResizable(false);
 		this.pointManager = pointManager;
 		
-		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 480);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+contentPane.setLayout(null);
 		
 		//CheckBoxes
-		cb1 = new JCheckBox("int[] newArray = array.clone();");
+		cb1 = new JCheckBox("array.length();");
 		cb1.setFont(new Font("Cherry Bomb One", Font.PLAIN, 25));
 		cb1.setForeground(new Color(255, 255, 255));
-		cb1.setBounds(236, 168, 401, 43);
+		cb1.setBounds(269, 172, 579, 43);
 		cb1.setOpaque(false);
 		contentPane.add(cb1);
 		
-		cb2 = new JCheckBox("int[] newArray = Arrays.copyOf(array, array.length);");
+		cb2 = new JCheckBox("array.length;");
 		cb2.setOpaque(false);
 		cb2.setForeground(Color.WHITE);
 		cb2.setFont(new Font("Cherry Bomb One", Font.PLAIN, 25));
-		cb2.setBounds(53, 214, 674, 39);
+		cb2.setBounds(269, 218, 541, 39);
 		contentPane.add(cb2);
 		
-		cb3 = new JCheckBox("int[] newArray = array;");
+		cb3 = new JCheckBox("length(array);");
 		cb3.setOpaque(false);
 		cb3.setForeground(Color.WHITE);
 		cb3.setFont(new Font("Cherry Bomb One", Font.PLAIN, 25));
-		cb3.setBounds(236, 256, 321, 38);
+		cb3.setBounds(269, 260, 571, 38);
 		contentPane.add(cb3);
 		
-		cb4 = new JCheckBox("System.arraycopy(array, 0, newArray, 0, array.length);");
+		cb4 = new JCheckBox("array.size();");
 		cb4.setOpaque(false);
 		cb4.setForeground(Color.WHITE);
 		cb4.setFont(new Font("Cherry Bomb One", Font.PLAIN, 25));
-		cb4.setBounds(53, 297, 691, 43);
+		cb4.setBounds(269, 301, 673, 43);
 		contentPane.add(cb4);
 		
 		ItemListener itemListener = new ItemListener() {
@@ -113,17 +113,18 @@ public class Frame5 extends JFrame {
 		JButton btnSub = new JButton("Submit");
 		btnSub.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean isCorrect = cb1.isSelected() && cb2.isSelected() 
-                        && !cb3.isSelected() && cb4.isSelected();
+				boolean isCorrect = cb1.isSelected() && !cb2.isSelected() 
+                        && cb3.isSelected() && cb4.isSelected();
     
 		    if (isCorrect) {
 		    	pointManager.addPoints(1);
 		    } else {
 		    	pointManager.addIncQuestion(questionNumber);
 		    }
-		 
-		    Frame6 jf6 = new Frame6(pointManager);
-			jf6.show();
+
+		    
+		    EndFrame jf11 = new EndFrame(pointManager);
+			jf11.show();
 			dispose();
 			
 			}
@@ -139,23 +140,24 @@ public class Frame5 extends JFrame {
 		GrayBox.setBounds(10, 161, 764, 191);
 		contentPane.add(GrayBox);
 		
-		JLabel lblText = new JLabel("masīvā newArray?");
-		lblText.setForeground(Color.WHITE);
-		lblText.setFont(new Font("Cherry Bomb One", Font.PLAIN, 35));
-		lblText.setBounds(259, 54, 349, 97);
-		contentPane.add(lblText);
-		
-		JLabel lblText2_1 = new JLabel("4)");
-        lblText2_1.setForeground(Color.WHITE);
-        lblText2_1.setFont(new Font("Cherry Bomb One", Font.PLAIN, 35));
-        lblText2_1.setBounds(735, -24, 525, 97);
-        contentPane.add(lblText2_1);
-		
-		JLabel lblText2 = new JLabel("Kā var kopēt masīvu jaunā");
+		JLabel lblText2 = new JLabel("Izvēlieties nepareizās opcijas");
 		lblText2.setForeground(new Color(255, 255, 255));
 		lblText2.setFont(new Font("Cherry Bomb One", Font.PLAIN, 35));
-		lblText2.setBounds(190, 11, 431, 97);
+		lblText2.setBounds(147, 11, 498, 97);
 		contentPane.add(lblText2);
+		
+		lblText2_1 = new JLabel("kā iegūt masīva(int) garumu?");
+		lblText2_1.setForeground(Color.WHITE);
+		lblText2_1.setFont(new Font("Cherry Bomb One", Font.PLAIN, 35));
+		lblText2_1.setBounds(171, 51, 498, 97);
+		contentPane.add(lblText2_1);
+		
+		
+		JLabel lblText2_1 = new JLabel("10)");
+        lblText2_1.setForeground(Color.WHITE);
+        lblText2_1.setFont(new Font("Cherry Bomb One", Font.PLAIN, 35));
+        lblText2_1.setBounds(716, -22, 525, 97);
+        contentPane.add(lblText2_1);
 		
 		JLabel Background = new JLabel("");
 		Background.setForeground(new Color(255, 255, 255));
@@ -163,5 +165,6 @@ public class Frame5 extends JFrame {
 		Background.setIcon(new ImageIcon("Background3.jpg"));
 		contentPane.add(Background);
 	}
-
 }
+
+

@@ -16,7 +16,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.*;
 
 public class SecondFrame extends JFrame {
+	
 	private PointManager pointManager;
+	private int questionNumber = 1;
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -113,14 +115,12 @@ public class SecondFrame extends JFrame {
                         && !cb2.isSelected() && !cb4.isSelected();
                 
                 pointManager.resetPoints();
-                System.out.println("Points: "+ pointManager.getPoints());
 
                 if (isCorrect) {
                 	pointManager.addPoints(1);
                 }else {
-                	
+                	pointManager.addIncQuestion(questionNumber);
                 }
-                System.out.println("Points: "+ pointManager.getPoints());
 
                 ThirdFrame jf3 = new ThirdFrame(pointManager); //open frame3
                 jf3.setVisible(true); //show frame3

@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 
 public class Frame10 extends JFrame {
 	private PointManager pointManager;
+	private int questionNumber = 9;
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -118,10 +119,9 @@ contentPane.setLayout(null);
 		    if (isCorrect) {
 		    	pointManager.addPoints(1);
 		    } else {
-
+		    	pointManager.addIncQuestion(questionNumber);
 		    }
-		    
-		    System.out.println("Points: "+ pointManager.getPoints());
+
 		    
 		    EndFrame jf11 = new EndFrame(pointManager);
 			jf11.show();
@@ -151,6 +151,7 @@ contentPane.setLayout(null);
 		lblText2_1.setFont(new Font("Cherry Bomb One", Font.PLAIN, 35));
 		lblText2_1.setBounds(171, 51, 498, 97);
 		contentPane.add(lblText2_1);
+		
 		
 		JLabel lblText2_1 = new JLabel("10)");
         lblText2_1.setForeground(Color.WHITE);

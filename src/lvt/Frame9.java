@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 
 public class Frame9 extends JFrame {
 	private PointManager pointManager;
+	private int questionNumber = 8;
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -118,10 +119,8 @@ contentPane.setLayout(null);
 		    if (isCorrect) {
 		    	pointManager.addPoints(1);
 		    } else {
-		    	
+		    	pointManager.addIncQuestion(questionNumber);
 		    }
-		    
-		    System.out.println("Points: "+ pointManager.getPoints());
 		    
 		    Frame10 jf10 = new Frame10(pointManager);
 			jf10.show();

@@ -18,6 +18,7 @@ import java.awt.event.ActionEvent;
 
 public class ThirdFrame extends JFrame {
 	private PointManager pointManager;
+	private int questionNumber = 2;
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -135,10 +136,8 @@ public class ThirdFrame extends JFrame {
 				if (isCorrect) {
                 	pointManager.addPoints(1);
                 }else {
-                	
+                	pointManager.addIncQuestion(questionNumber);
                 }
-				
-				System.out.println("Points: "+ pointManager.getPoints());
 			    
 			    Frame4 jf4 = new Frame4(pointManager);
 				jf4.show();

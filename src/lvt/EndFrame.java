@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Font;
@@ -62,7 +63,7 @@ public class EndFrame extends JFrame {
 				dispose();
 			}
 		});
-		btnStart.setBounds(583, 306, 191, 58);
+		btnStart.setBounds(566, 306, 208, 58);
 		contentPane.add(btnStart);
 		
 		JButton btnQuit = new JButton("Quit");
@@ -74,13 +75,13 @@ public class EndFrame extends JFrame {
 				System.exit(0);
 			}
 		});
-		btnQuit.setBounds(583, 375, 191, 58);
+		btnQuit.setBounds(566, 375, 208, 58);
 		contentPane.add(btnQuit);
 		
-		JLabel lblPoints = new JLabel("Points: "+ pointManager.getPoints());
+		JLabel lblPoints = new JLabel("Jūs pareizi atbildējāt uz "+ pointManager.getPoints()+ " jautājumiem!");
 		lblPoints.setForeground(Color.WHITE);
-		lblPoints.setFont(new Font("Cherry Bomb One", Font.PLAIN, 35));
-		lblPoints.setBounds(10, 73, 163, 45);
+		lblPoints.setFont(new Font("Cherry Bomb One", Font.PLAIN, 28));
+		lblPoints.setBounds(10, 74, 661, 45);
 		contentPane.add(lblPoints);
 		
 		JLabel lblNewLabel = new JLabel("Rezultāts");
@@ -88,6 +89,19 @@ public class EndFrame extends JFrame {
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setBounds(320, 11, 163, 45);
 		contentPane.add(lblNewLabel);
+		
+		// Display incorrect questions
+        List<Integer> incorrectQuestions = pointManager.getIncQuestions();
+        StringBuilder incorrectQuestionsText = new StringBuilder("Incorrect Questions: ");
+        for (int question : incorrectQuestions) {
+            incorrectQuestionsText.append(question).append("), ");
+        }
+		
+		JLabel lblIncQuestions = new JLabel("" + incorrectQuestionsText);
+		lblIncQuestions.setForeground(Color.WHITE);
+		lblIncQuestions.setFont(new Font("Cherry Bomb One", Font.PLAIN, 28));
+		lblIncQuestions.setBounds(10, 130, 764, 45);
+		contentPane.add(lblIncQuestions);
 		
 		JLabel Background = new JLabel("");
 		Background.setBounds(-192, -236, 1920, 1080);
