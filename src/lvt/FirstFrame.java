@@ -77,7 +77,7 @@ public class FirstFrame extends JFrame {
 				System.exit(0);
 			}
 		});
-		btnQuit.setBounds(310, 262, 163, 58);
+		btnQuit.setBounds(310, 317, 163, 58);
 		contentPane.add(btnQuit);
 		
 		JLabel lblNewLabel = new JLabel("Laipni aicināti uz testu");
@@ -97,6 +97,20 @@ public class FirstFrame extends JFrame {
 		lblValodJava.setFont(new Font("Cherry Bomb One", Font.PLAIN, 35));
 		lblValodJava.setBounds(288, 110, 226, 45);
 		contentPane.add(lblValodJava);
+		
+		JButton btnInfo = new JButton("Info");
+		btnInfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				InfoFrame jf15 = new InfoFrame(pointManager);
+				jf15.show();
+				dispose();
+			}
+		});
+		btnInfo.setForeground(new Color(61, 148, 150));
+		btnInfo.setFont(new Font("Dialog", Font.PLAIN, 22));
+		btnInfo.setBackground(Color.WHITE);
+		btnInfo.setBounds(310, 248, 163, 58);
+		contentPane.add(btnInfo);
 		
 		JLabel Background1 = new JLabel("");
 		Background1.setBounds(-192, -236, 1920, 1080);

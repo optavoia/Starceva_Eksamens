@@ -121,7 +121,7 @@ contentPane.setLayout(null);
                     JOptionPane.showMessageDialog(contentPane, "Lūdzu, izdariet izvēli", "Kļūda", JOptionPane.ERROR_MESSAGE);
                 } else {
 				boolean isCorrect = cb1.isSelected() && cb2.isSelected() 
-                        && cb3.isSelected() && !cb4.isSelected();
+                        && !cb3.isSelected() && !cb4.isSelected();
     
 			    if (isCorrect) {
 			    	pointManager.addPoints(1);
