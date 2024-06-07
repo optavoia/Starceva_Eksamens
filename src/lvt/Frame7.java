@@ -78,7 +78,7 @@ public class Frame7 extends JFrame {
 		cb1.setOpaque(false);
 		contentPane.add(cb1);
 		
-		cb2 = new JCheckBox("Kļūda IndexOutOfBoundsException");
+		cb2 = new JCheckBox("Kļūda ArrayIndexOutOfBoundsException");
 		cb2.setOpaque(false);
 		cb2.setForeground(Color.WHITE);
 		cb2.setFont(new Font("Cherry Bomb One", Font.PLAIN, 25));
