@@ -92,11 +92,11 @@ public class Frame7 extends JFrame {
 		cb3.setBounds(199, 262, 421, 38);
 		contentPane.add(cb3);
 		
-		cb4 = new JCheckBox("Nekas nenotiks");
+		cb4 = new JCheckBox("Masīvs automātiski tiek paplašināts");
 		cb4.setOpaque(false);
 		cb4.setForeground(Color.WHITE);
 		cb4.setFont(new Font("Cherry Bomb One", Font.PLAIN, 25));
-		cb4.setBounds(199, 303, 205, 43);
+		cb4.setBounds(199, 303, 575, 43);
 		contentPane.add(cb4);
 		
 		ItemListener itemListener = new ItemListener() {
@@ -121,7 +121,7 @@ public class Frame7 extends JFrame {
                     JOptionPane.showMessageDialog(contentPane, "Lūdzu, izdariet izvēli", "Kļūda", JOptionPane.ERROR_MESSAGE);
                 } else {
 				boolean isCorrect = cb2.isSelected() && !cb3.isSelected() 
-                        && cb1.isSelected() && cb4.isSelected();
+                        && cb1.isSelected() && !cb4.isSelected();
     
 			    if (isCorrect) {
 			    	pointManager.addPoints(1);
